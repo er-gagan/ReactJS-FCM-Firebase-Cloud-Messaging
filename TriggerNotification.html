@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const handleBtn = () => {
+
+            fetch('https://fcm.googleapis.com/fcm/send', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Key=<Server Key>",
+                },
+                body: JSON.stringify(
+                    {
+                        "to": "<Unique Device Token>",
+                        "notification": {
+                            "title": "Hello",
+                            "body": "Everyone is here!",
+                            // "icon": ""
+                        },
+                    }
+                )
+            }).then((res) => {
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+    </script>
+    <button onclick="handleBtn()">Send</button>
+</body>
+
+</html>
